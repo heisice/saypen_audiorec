@@ -43,7 +43,7 @@ for line in open('audio_rec.csv'):
 	sticker_no, word = parsed[0]
 
 	# 파일명을 만든다.
-	filename = "REC1_%s.mp3" & sticker_no
+	filename = "REC1_%s.mp3" % sticker_no
 
 	# 파일이 이미 있으면 건너띈다.
 	if os.path.isfile(filename):
