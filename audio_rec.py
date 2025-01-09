@@ -65,7 +65,6 @@ for line in open('audio_rec.csv'):
 
 		# 리디렉션 URL에 wordid를 넘겨 다시 호출한다.
 		url = 'https://dic.daum.net/word/view.do?wordid=' + parsed[0] + '&q=' + word
-		print(url)
 		res = requests.get(url)
 
 	# 페이지에서 바로 단어 읽기 링크를 찾는다.
@@ -82,5 +81,3 @@ for line in open('audio_rec.csv'):
 	with open(filename, 'wb') as file:
 		file.write(audio.content)
 		file.close()
-
-	# break
