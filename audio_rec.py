@@ -20,9 +20,9 @@ from urllib import parse
 
 # 정규식 패턴 목록
 csv_pattern = re.compile('([^,]+),"?([^"\n]+)"?\n?')
-filename_pattern = re.compile('[^A-Za-z0-9_\.]')
-redirect_pattern = re.compile('<meta http-equiv="Refresh" content="0; URL=/word/view\.do\?wordid=([^&]+)&q=')
-audio_link_pattern = re.compile('<a href="(http://t1\.daumcdn\.net/language/[^"]+)"')
+filename_pattern = re.compile('[^A-Za-z0-9_\\.]')
+redirect_pattern = re.compile('<meta http-equiv="Refresh" content="0; URL=/word/view\\.do\\?wordid=([^&]+)&q=')
+audio_link_pattern = re.compile('<a href="(http://t1\\.daumcdn\\.net/language/[^"]+)"')
 
 # csv 파일을 열어서 오디오랙 스티커 번호와 단어를 읽어온다.
 # 각 라인을 읽어서 스티커 번호와 단어를 파싱한다. (CSV는 엑셀로 차트를 만들어 내보내기 하면 편합니다.)
@@ -65,6 +65,7 @@ for line in open('audio_rec.csv'):
 
 		# 리디렉션 URL에 wordid를 넘겨 다시 호출한다.
 		url = 'https://dic.daum.net/word/view.do?wordid=' + parsed[0] + '&q=' + word
+		print(url)
 		res = requests.get(url)
 
 	# 페이지에서 바로 단어 읽기 링크를 찾는다.
@@ -81,3 +82,5 @@ for line in open('audio_rec.csv'):
 	with open(filename, 'wb') as file:
 		file.write(audio.content)
 		file.close()
+
+	# break
