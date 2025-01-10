@@ -29,7 +29,7 @@ audio_link_pattern = re.compile('<a href="(http://t1\\.daumcdn\\.net/language/[^
 # 오디오 스티커 번호,단어
 # 예: 02001,blue
 
-for line in open('audio_rec.csv'):
+for line in open('audio_rec.csv', encoding = 'utf-8-sig'):
 	
 	# 정규식으로 라인을 파싱
 	parsed = csv_pattern.findall(line)
@@ -43,7 +43,7 @@ for line in open('audio_rec.csv'):
 	sticker_no, word = parsed[0]
 
 	# 파일명을 만든다.
-	filename = "REC1_%s.mp3" % sticker_no
+	filename = "REC1_%s.mp3" % sticker_no.strip()
 
 	# 파일이 이미 있으면 건너띈다.
 	if os.path.isfile(filename):
