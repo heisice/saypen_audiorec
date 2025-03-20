@@ -140,6 +140,11 @@ class MainWindow(QMainWindow):
         # 버튼 레이아웃
         button_layout = QHBoxLayout()
         
+        # 단어 리스트 클리어 버튼
+        self.clear_btn = QPushButton('단어 리스트 초기화')
+        self.clear_btn.clicked.connect(self.clear_word_list)
+        button_layout.addWidget(self.clear_btn)
+        
         # 다운로드 버튼
         self.download_btn = QPushButton('단어 일괄 다운로드')
         self.download_btn.clicked.connect(self.process_all_data)
@@ -244,6 +249,24 @@ class MainWindow(QMainWindow):
             # 마지막 행은 삭제하지 않고 내용만 비움
             self.table.cellWidget(0, 0).setText("1")
             self.table.cellWidget(0, 1).setText("")
+    
+    def clear_word_list(self):
+        """단어 리스트를 초기화하는 함수"""
+        # 확인 대화상자 표시
+        reply = QMessageBox.question(
+            self, 
+            '단어 리스트 초기화', 
+            '정말로 모든 단어를 지우고 리스트를 초기화하시겠습니까?',
+            QMessageBox.Yes | QMessageBox.No, 
+            QMessageBox.No
+        )
+        
+        if reply == QMessageBox.Yes:
+            # 테이블 초기화
+            self.table.setRowCount(0)
+            self.table.setRowCount(1)
+            # 첫 번째 행 추가
+            self.add_table_row(0, "1")
     
     def process_all_data(self):
         # 테이블에서 데이터 수집
