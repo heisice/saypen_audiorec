@@ -63,11 +63,6 @@ mac: check-deps
 		$(ICON_OPTION) \
 		--macos-app-name=$(APP_TITLE) \
 		--macos-app-mode=gui \
-		--include-package=imageio \
-		--include-package=PIL \
-		--include-package=numpy \
-		--include-package=flask \
-		--include-package=waitress \
 		--include-package=PyQt5 \
 		--include-package=requests \
 		--remove-output \
@@ -94,11 +89,6 @@ windows: check-deps
 		--windows-product-name=$(APP_TITLE) \
 		--windows-company-name="세이펜" \
 		--windows-file-description=$(APP_TITLE) \
-		--include-package=imageio \
-		--include-package=PIL \
-		--include-package=numpy \
-		--include-package=flask \
-		--include-package=waitress \
 		--include-package=PyQt5 \
 		--include-package=requests \
 		--remove-output \
